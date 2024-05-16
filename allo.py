@@ -108,14 +108,14 @@ def otp(message):
     	if 'مرجع' in res1:
     		 bot.send_message(chat_id=message.chat.id,text='تم ارسال الانترنت بنجاح')
     	else:
-    		 bot.send_message(chat_id=message.chat.id, text='، حدث خطأ، مرات حتا ولو حدث خطأ تصلك انتظر لمعرفة رصيدك')
+    		 bot.send_message(chat_id=message.chat.id, text='انتظر لمعرفة رصيدك')
     else:
     	bot.send_message(chat_id=message.chat.id,text='يبدو ان الرمز خاطئ او انتهت مدة صلاحية الرمز ')
     bitch = get_balance(access_token)
     
     for account in bitch['accounts']:
         if account['label'] == 'Bonus parrainage':
-            bot.send_message(chat_id=message.chat.id, text=f"""<strong>your bonus now: {account['value']} by @frr_8</strong>""",,parse_mode='html')
+            bot.send_message(chat_id=message.chat.id, text=f"""<strong>your bonus now: {account['value']} by @frr_8</strong>""",parse_mode='html')
         else:
              print('مبغاتش يزببي')
              	
