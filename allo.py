@@ -115,7 +115,7 @@ def otp(message):
     
     for account in bitch['accounts']:
         if account['label'] == 'Bonus parrainage':
-            bot.send_message(chat_id=message.chat.id, text=f"""<strong>your bonus now: {account['value']} by @frr_8</strong>""")
+            bot.send_message(chat_id=message.chat.id, text=f"""<strong>your bonus now: {account['value']} by @frr_8</strong>""",,parse_mode='html')
         else:
              print('مبغاتش يزببي')
              	
