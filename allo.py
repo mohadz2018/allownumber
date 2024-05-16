@@ -1,4 +1,3 @@
-#pylint:disable=E0602
 import requests
 import telebot
 from telebot import types
@@ -6,6 +5,7 @@ from flask import Flask
 from threading import Thread
 import random
 import time
+import json
 app = Flask('')
 
 bot = telebot.TeleBot("7162536504:AAHwmidlmIHCwlHFTdhFhxqHko2lCL-b4nE")
@@ -107,7 +107,7 @@ def otp(message):
     	if 'مرجع' in response:
     		 bot.send_message(chat_id=message.chat.id,text='تم ارسال الانترنت بنجاح')
     	else:
-    		 bot.send_message(chat_id=message.chat.id, text='، حدث خطأ، مرات حتا ولو حدث خطأ تصلك انترنت انتظر التحديث القادم ولن يحدث اخطاء باءن الله')
+    		 bot.send_message(chat_id=message.chat.id, text='، حدث خطأ، مرات حتا ولو حدث خطأ تصلك انتظر لمعرفة رصيدك')
     else:
     	bot.send_message(chat_id=message.chat.id,text='يبدو ان الرمز خاطئ او انتهت مدة صلاحية الرمز ')
     bitch = get_balance(access_token)
