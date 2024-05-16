@@ -82,6 +82,8 @@ def otp(message):
     response = requests.post(url, headers=headers, data=payload)
     access_token = response.json().get("access_token")
     if access_token:
+    	m = 0
+    	count_reference = 0
     	bot.send_message(chat_id=message.chat.id,text='انتظر للتعبئة')
     	abc = 'ABCDEFGHOVXZ1234567'
     	mgm = ''.join(random.choice(abc) for _ in range(10))
@@ -101,23 +103,27 @@ def otp(message):
        "skipMgm":"false",
        "mgmValue":mgm
        }
-    	for _ in range(6):
+    	while True:
     		response = requests.post('https://ibiza.ooredoo.dz/api/v1/mobile-bff/users/mgm/info/apply', headers=headers, json=json_data).text
     		time.sleep(1)
-    	res1=response
+    		if 'مرجع' in response:
+    			count_reference += 1
+    		if m == 6:
+    			break
+    	res1= response
     	if 'مرجع' in res1:
     		 bot.send_message(chat_id=message.chat.id,text='تم ارسال الانترنت بنجاح')
+    		 bitch = get_balance(access_token)
+    		 for account in bitch['accounts']:
+    		      if account['label'] == 'Bonus parrainage':
+    		          bot.send_message(chat_id=message.chat.id, text=f"""لقد قمت بارسال {count_reference}GO
+    		      	<strong>your bonus now: {account['value']}
+    		      	 by @frr_8</strong>""",parse_mode='html')
     	else:
-    		 bot.send_message(chat_id=message.chat.id, text='انتظر لمعرفة رصيدك')
+    		 pass
     else:
     	bot.send_message(chat_id=message.chat.id,text='يبدو ان الرمز خاطئ او انتهت مدة صلاحية الرمز ')
-    bitch = get_balance(access_token)
-    
-    for account in bitch['accounts']:
-        if account['label'] == 'Bonus parrainage':
-            bot.send_message(chat_id=message.chat.id, text=f"""<strong>your bonus now: {account['value']} by @frr_8</strong>""",parse_mode='html')
-        else:
-             print('مبغاتش يزببي')
+ 
              	
 def get_balance(access_token):
     headers = {
