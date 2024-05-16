@@ -104,7 +104,8 @@ def otp(message):
     	for _ in range(6):
     		response = requests.post('https://ibiza.ooredoo.dz/api/v1/mobile-bff/users/mgm/info/apply', headers=headers, json=json_data).text
     		time.sleep(1)
-    	if 'مرجع' in response:
+    	res1=response
+    	if 'مرجع' in res1:
     		 bot.send_message(chat_id=message.chat.id,text='تم ارسال الانترنت بنجاح')
     	else:
     		 bot.send_message(chat_id=message.chat.id, text='، حدث خطأ، مرات حتا ولو حدث خطأ تصلك انتظر لمعرفة رصيدك')
@@ -114,14 +115,14 @@ def otp(message):
     
     for account in bitch['accounts']:
         if account['label'] == 'Bonus parrainage':
-            bot.send_message(chat_id=message.chat.id, text=f"""<strong>your bonus now:{account['value']} by @frr_8</strong>""")
+            bot.send_message(chat_id=message.chat.id, text=f"""<strong>your bonus now: {account['value']} by @frr_8</strong>""")
         else:
              print('مبغاتش يزببي')
              	
 def get_balance(access_token):
     headers = {
         'Authorization': f'Bearer {access_token}',
-        'language': 'AR',
+        'language': 'FR',
         'request-id': '2dfefb8b-b2fa-445a-a49c-113d2d880b2f',
         'flavour-type': 'gms',
         'Host': 'ibiza.ooredoo.dz',
