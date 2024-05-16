@@ -114,10 +114,10 @@ def otp(message):
     	res1= response
     	if 'مرجع' in res1:
     		 bot.send_message(chat_id=message.chat.id,text='تم ارسال الانترنت بنجاح')
-    		 bitch = get_balance(access_token)
-    		 for account in bitch['accounts']:
-    		      if account['label'] == 'Bonus parrainage':
-    		          bot.send_message(chat_id=message.chat.id, text=f"""لقد قمت بارسال {count_reference}GO
+    	bitch = get_balance(access_token)
+    	for account in bitch['accounts']:
+    	    if account['label'] == 'Bonus parrainage':
+    	        bot.send_message(chat_id=message.chat.id, text=f"""لقد قمت بارسال {count_reference}GO
     		      	<strong>your bonus now: {account['value']}
     		      	 by @frr_8</strong>""",parse_mode='html')
     	else:
