@@ -8,7 +8,7 @@ import time
 import json
 app = Flask('')
 
-bot = telebot.TeleBot("7162536504:AAHwmidlmIHCwlHFTdhFhxqHko2lCL-b4nE")
+bot = telebot.TeleBot("7134611494:AAGCZQIeIJUXBp_wMDUWtGemfgDE25gdLCg")
 
 @bot.message_handler(commands=["start"])
 def startt(message):
@@ -104,6 +104,7 @@ def otp(message):
        "mgmValue":mgm
        }
     	while True:
+    		m += 1
     		response = requests.post('https://ibiza.ooredoo.dz/api/v1/mobile-bff/users/mgm/info/apply', headers=headers, json=json_data).text
     		time.sleep(1)
     		if 'مرجع' in response:
